@@ -4,7 +4,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	mode: "production",
+	mode: "development",
 	entry: {
 		index: "./src/index.js"
 	},
@@ -15,7 +15,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx/,
+				test: /\.jsx?/,
 				exclude: /node_modules/,
 				use: [
 					{
@@ -46,6 +46,7 @@ module.exports = {
 		new CleanWebpackPlugin(['./dist']),
 		new webpack.BannerPlugin('mosby'),
 		new htmlWebpackPlugin({
+			template: './index.html',
 			title: 'mobx-react-base'
 		})
 	]
