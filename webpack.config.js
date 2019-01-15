@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: "production",
@@ -43,6 +44,9 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(['./dist']),
-		new webpack.BannerPlugin('mosby')
+		new webpack.BannerPlugin('mosby'),
+		new htmlWebpackPlugin({
+			title: 'mobx-react-base'
+		})
 	]
 }
