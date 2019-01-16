@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
+import Father from './component/father';
 
-ReactDom.render(<div>这是一个测试页面</div>, document.getElementById('root'));
+ReactDom.render(<Father/>, document.getElementById('root'));
