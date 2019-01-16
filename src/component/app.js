@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import {Provider} from 'mobx-react';
 import TodoList from "./todoList";
 import store from "../store/index";
 
 class App extends Component {
     render() {
         return (
-            <TodoList store={store}/>
+            <Provider store={store}>
+                <TodoList/>
+            </Provider>
         )
     }
 }

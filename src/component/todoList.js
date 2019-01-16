@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {observer, PropTypes as ObservablePropTypes} from 'mobx-react';
+import {inject, observer, PropTypes as ObservablePropTypes} from 'mobx-react';
 import TodoItem from "./todoItem";
 
+@inject("store")
 @observer
 class TodoList extends Component {
     // 属性类型要在全局这里定义
@@ -32,7 +33,7 @@ class TodoList extends Component {
     };
 
     handleChange = (e) => {
-        var inputTile = e.target.value;
+        const inputTile = e.target.value;
         this.setState({
             inputTile
         });
