@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {observer} from "mobx-react";
+import {observer, inject} from "mobx-react";
+import {compose} from 'recompose';
 
-@observer
 class Child extends Component {
     render(){
         const {vm} = this.props;
@@ -25,4 +25,8 @@ class Child extends Component {
     }
 }
 
-export default Child;
+//注意inject与observer的顺寻，否则会报错
+export default compose(
+    inject("vm"),
+    observer
+)(Child);
