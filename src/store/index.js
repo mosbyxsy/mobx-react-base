@@ -1,9 +1,8 @@
-import {action, computed, observable} from "mobx";
+import {action, computed, observable, decorate} from "mobx";
 
-export default class VM {
-    @observable firstName = "";
-    @observable lastName = "";
-    @computed
+class VM {
+    firstName = "";
+    lastName = "";
     get fullName() {
         const {firstName, lastName} = this;
         if (!firstName && !lastName) {
@@ -12,13 +11,21 @@ export default class VM {
             return firstName + " " + lastName;
         }
     }
-    @action.bound
     setValue(key, event) {
         this[key] = event.target.value;
     }
-    @action.bound
     doReset() {
         this.firstName = "";
         this.lastName = "";
     }
 }
+
+decorate(VM, {
+    firstName: observable,
+    lastName: observable,
+    fullName: computed,
+    setValue: action.bound,
+    doReset: action.bound
+});
+
+export default VM;
