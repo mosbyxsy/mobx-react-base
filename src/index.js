@@ -1,4 +1,11 @@
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
+import {observable} from "mobx";
 
-ReactDom.render(<div>这是一个测试页面</div>, document.getElementById('root'));
+let num = observable.box(20);
+let str = observable.box('hello');
+let bool = observable.box(true);
+
+// 使用set()设置数值
+num.set(50);
+
+// get()获取原生数值
+console.log(num.get(), str, bool);
